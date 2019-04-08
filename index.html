@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Media use and attention</title>
+    <link rel='stylesheet' type='text/css' href='style.css'/>
+  </head>
+  <body>
+
+    <form id='sendtoPHP' method='post' action='server-side.php'>
+      <input type='hidden' name='put-studyid-here' id = 'put-studyid-here' value = ''/>
+      <input type='hidden' name='put-sscode-here' id = 'put-sscode-here' value = ''/>
+      <input type='hidden' name='put-data-here' id = 'put-data-here' value = ''/>
+    </form>
+
+    <audio id='metronome' src="./stimuli/metronomeMono.mp3" type="audio/mpeg"></audio>
+    <div id='stim-container'></div>
+    <div id='vid-container'>
+      <iframe id='vid-iframe' src=''></iframe>
+    </div>
+
+    <header id='uw-header'>
+      <img id='uw-logo' src='UniversityOfWaterloo_logo_horiz_rev_rgb.png'/>
+    </header>
+
+    <div id='info-consent-letter'>
+      <p><b>Project Title:</b> Attending to mind wandering</p>
+      <p><b>Post-Doctoral Researcher:</b> Dr. Brandon Ralph, bcwralph@uwaterloo.ca, Department of Psychology, University of Waterloo</p>
+      <p><b>Faculty Researcher:</b> Dr. Paul Seli, pseli@whateveritis, Department of Psychology and Neuroscience, Duke University</p>
+      <p><b>Faculty Researcher:</b> Dr. Daniel Smilek, dsmilek@uwaterloo.ca, 519-888-4567 x 36365, Department of Psychology, University of Waterloo</p>
+      <p><i><b>This experiment involves auditory stimuli. Please ensure you have access to audio before beginning.</b></i></p>
+      <p>You are invited to participate in a research study being conducted by Dr. Paul Seli of the Department of Psychology and Neuroscience, Duke University, and Dr. Brandon Ralph and Dr. Daniel Smilek of the Department of Psychology, University of Waterloo, looking at the how attention changes over time.</p>
+      <p>As a participant in this study, you will be asked to make a key press in synchrony with the presentation of an audible metronome sound. Periodically, the task will temporarily stop, and you will be asked to report upon your current experience.</p>
+      <p><b>In total, these tasks will take you approximately 40 minutes and you will receive $4.00 in appreciation for your time.</b></p>
+      <p>At the end of the study you will receive a validation code that you must enter in Mechanical Turk in order to receive your remuneration. Your participation is entirely voluntary; if you wish to withdraw from the study at any time, you may simply close your browser or stop responding. Incomplete data will be deleted once data collection has finished. However, closing your browser will also forfeit any compensation for the study (you will not receive a validation code). To withdraw participation and still receive compensation, you may simply stop responding during the attention task, and click-through questions to receive your validation code. There are no known or anticipated risks from participating in this study.</p>
+      <p>When information is transmitted over the internet confidentiality cannot be guaranteed. University of Waterloo practices are to turn off functions that collect machine identifiers such as IP addresses. The host of the system collecting the data such as Mechanical Turk may collect this information without our knowledge and make this accessible to us. We will not use or save this information without your consent. If you prefer not to submit your survey responses through this host, please do not sign up for this study.</p>
+      <p>The data, with no personal identifiers, collected from this study will be maintained on a password-protected computer database in the Department of Psychology at the University of Waterloo. As well, the data will be electronically archived after completion of the study, maintained for a minimum of 7 years. Upon completion of this study, de-identified data may be deposited in an online public repository/database. Identifying information will not appear in any report, publication, or presentation resulting from the study. This process is integral to the research process as it allows other researchers to verify results and avoid duplicating research. Other individuals may access these data by accessing the open access repository. Although the dataset without identifiers may be shared publicly, your identity will always remain confidential.</p>
+      <p>Should you have any questions about the study, or if you would like to receive a copy of the results of this study, please contact Daniel Smilek at dsmilek@uwaterloo.ca or 519-888-4567 ext. 35365.</p>
+      <p>I would like to assure you that this study has been reviewed by, and received ethics clearance through, a University of Waterloo Research Ethics Committee (ORE#18138). If you have any questions for the Committee, please contact the Office of Research Ethics at 1-519-888-4567 Ext. 36005, or ore-ceo@uwaterloo.ca</p>
+      <p><b>With full knowledge of all foregoing, I agree of my own free will, to participate in this study.</b></p>
+    </div>
+
+    <div id='decline-to-participate'>
+      <p>You have declined to participate at this time.</p>
+      <p>If you change your mind, simply reload this webpage.</p>
+    </div>
+
+    <div id='task-inst'></div>
+    <div id='practice-over'>
+      <p>The practice trials are now over.</p>
+      <p>When you are ready to begin the experiment, please click the 'Begin Task' button below.</p>
+    </div>
+    <div id='intermission'></div>
+
+    <div id='thought-probe-1'>
+      <br>
+      <p><b>Just prior to the onset of this screen, I was:</b></p>
+      <input type="radio" name="mw-probe-rad" id="on-task" value="on-task"/>
+        <label for="on-task">Focused on the task.</label>
+        <br>
+      <input type="radio" name="mw-probe-rad" id="int-mw" value="int-mw"/>
+        <label for="int-mw">Not focused on the task, but I <b><u>was</u></b> trying to focus on it.</label>
+        <br>
+      <input type="radio" name="mw-probe-rad" id="unint-mw" value="unint-mw"/>
+        <label for="unint-mw">Not focused on the task, but I <b><u>wasn't</u></b> trying to focus on it.</label>
+        <br>
+      <br>
+    </div>
+
+    <div id='thought-probe-2'>
+      <br>
+      <p><b>The thoughts I was experiencing were moving freely:</b></p>
+      <input type="radio" name="guidance-probe-rad" id="guide-yes" value="guide-yes"/>
+        <label for="guide-yes">Yes</label>
+        <br>
+      <input type="radio" name="guidance-probe-rad" id="guide-no" value="guide-no"/>
+        <label for="guide-no">No</label>
+        <br>
+      <br>
+    </div>
+
+    <button id='no-consent-btn' class='consent-btn'>I do not agree to participate</button>
+    <button id='yes-consent-btn' class='consent-btn'><b>I agree to participate</b></button>
+
+    <button id='inst-back-btn'>Back</button>
+    <button id='inst-next-btn'>Next</button>
+    <button id='save-resp-btn'>Save responses</button>
+    <button id='test-sound-btn'>Test Sound</button>
+
+    <div id='do-not-refresh'>
+      <br><p><b><i>Please be advised: Refreshing your browser will cause the task to reset. Please do not refresh your browser.</i></b></p>
+    </div>
+
+
+  <script type='text/javascript' language='javascript' src='task.js'></script>
+  </body>
+</html>
